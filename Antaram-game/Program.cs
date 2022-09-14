@@ -1,4 +1,8 @@
+using Antaram_game.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<ApplicationContext>(dbBuilder => dbBuilder.UseSqlServer(builder.Configuration.GetConnectionString("LocalDB")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

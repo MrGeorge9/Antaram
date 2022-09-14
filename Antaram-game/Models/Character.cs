@@ -1,0 +1,16 @@
+﻿namespace Antaram_game.Models
+{
+    public class Character
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Level { get; set; }
+        public int MaxHP { get; set; }
+        public int CurrentHP { get; set; }
+        public int MaxMana { get; set; }
+        public int CurrentMana { get; set; }
+
+        public int UserId { get; set; }
+        public User User { get; set; }
+    }
+}
