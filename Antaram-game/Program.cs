@@ -1,4 +1,5 @@
 using Antaram_game.Context;
+using Antaram_game.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,7 @@ builder.Services.AddDbContext<ApplicationContext>(dbBuilder => dbBuilder.UseSqlS
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IPublicService, PublicService>();
 
 var app = builder.Build();
 

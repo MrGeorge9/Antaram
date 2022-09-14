@@ -1,0 +1,12 @@
+﻿@model Antaram_game.Models.DTOs.ResponseDto
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Antaram</h1>
+    <a href="/register">Register</a>
+    <a href="/login">Login</a>
+</div>
+
+@if (Model != null)
+{
+    <p style="color: green">@Model.Message</p>
+}
