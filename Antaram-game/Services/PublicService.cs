@@ -7,10 +7,12 @@ namespace Antaram_game.Services
     public class PublicService : IPublicService
     {
         private readonly ApplicationContext _db;
+        private readonly IAuthService _authService;   
 
-        public PublicService(ApplicationContext db)
+        public PublicService(ApplicationContext db, IAuthService authService)
         {
             _db = db;
+            _authService = authService;            
         }
 
         public string Register(UserRegistrationDto userRegistration)
@@ -44,6 +46,34 @@ namespace Antaram_game.Services
             _db.SaveChanges();
 
             return "New user has been created";
+        }
+
+        public string Login(UserLoginDto userLogin)
+        {
+            if (userLogin.Name == string.Empty && userLogin.Password == string.Empty)
+            {
+                return "No data provided";
+            }
+            if (userLogin.Name == string.Empty)
+            {
+                return "No name provided";
+            }
+            if (userLogin.Password == string.Empty)
+            {
+                return "No pasword provided";
+            }
+
+            var user = _db.Users.FirstOrDefault(p => p.Name.Equals(userLogin.Name));
+            if (user == null)
+            {
+                return "No such user";
+            }
+            if (!userLogin.Password.Equals(user.Password))
+            {
+                return "Password is incorrect";
+            }        
+            
+            return "Successfully logged in";
         }
     }
 }

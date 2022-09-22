@@ -4,6 +4,7 @@ namespace Antaram_game.Services
 {
     public interface IPublicService
     {
-        public string Register(UserRegistrationDto userRegistration);
+        string Register(UserRegistrationDto userRegistration);
+        string Login(UserLoginDto userLogin);
     }
 }
