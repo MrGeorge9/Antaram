@@ -2,7 +2,6 @@
 using Antaram_game.Models.DTOs;
 using Antaram_game.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace Antaram_game.Controllers
 {
@@ -21,7 +20,7 @@ namespace Antaram_game.Controllers
 
         [HttpGet("")]
         public IActionResult Index(string message)
-        {          
+        {
             return View(new ResponseDto(message));
         }
 
@@ -38,7 +37,7 @@ namespace Antaram_game.Controllers
             var response = _publicService.Register(credentials);
             if (response.Equals("New user has been created"))
             {
-                return new RedirectResult($"/?message={response}");                
+                return new RedirectResult($"/?message={response}");
             }
 
             return View(new ResponseDto(response));
@@ -58,10 +57,10 @@ namespace Antaram_game.Controllers
 
             var user = _db.Users.FirstOrDefault(p => p.Name.Equals(name));
 
-            HttpContext.Response.Headers.SetCookie = $"jwt={_jwtService.GenerateToken(user)}";            
             if (response.Equals("Successfully logged in"))
             {
-                return new RedirectResult($"/?message={response}");
+                HttpContext.Response.Headers.SetCookie = $"jwt={_jwtService.GenerateToken(user)}";
+                return new RedirectResult("/mainmenu");
             }
 
             return View(new ResponseDto(response));
@@ -69,19 +68,9 @@ namespace Antaram_game.Controllers
 
         [HttpGet("/logout")]
         public IActionResult Logout()
-        {       
+        {
             HttpContext.Response.Cookies.Delete("jwt");
             return new RedirectResult("/");
         }
-
-        [HttpGet("/user")]
-        public IActionResult User()
-        {
-            var identity = HttpContext.User.Identity as ClaimsIdentity;
-            var userClaims = identity.Claims;
-            var user = _jwtService.ReturnUserFromToken(userClaims);            
-            return new RedirectResult("/");
-        }
-        
     }
 }

@@ -6,8 +6,8 @@ namespace Antaram_game.Controllers
     [Authorize(Roles = "Player")]
     public class PlayerController : Controller
     {
-        [HttpGet("/player")]
-        public IActionResult Player()
+        [HttpGet("/mainmenu")]
+        public IActionResult MainMenu()
         {
             return View();
         }
