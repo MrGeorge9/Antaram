@@ -1,0 +1,46 @@
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<form method="post">
+    <fieldset>
+        <label for="Race">Race</label>
+        <select name="Race" id="select1">
+            <option value="human">Human</option>
+            <option value="elf">Elf</option>
+            <option value="dwarf">Dwarf</option>
+            <option value="orc">Orc</option>
+        </select>
+        <label for="Sex">Sex</label>
+        <select name="Sex">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <div id="select2"></div>
+
+        <label for="Name">Name</label>
+        <input type="text"
+               name="Name"
+               id="Name"
+               required />
+        <button type="submit">Login</button>
+    </fieldset>
+</form>
+
+<script>  
+    $("#select1").change(function() {
+        var selectedVal = $(this).val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/charcreation',
+            success:
+                function(response) {
+                    if (selectedVal == "human" || selectedVal == "elf") {
+                        var markup = "<label for='Style'>Style</label><select name='Style'><option value='fighter'>Fighter</option><option value='mystic'>Mystic</option></select>";
+                    }
+                    else {
+                        var markup = "<label for='Style'>Style</label><select name='Style'><option value='fighter'>Fighter</option></select>";
+                    }
+                    $("#select2").html(markup);                   
+                }
+        });
+    })
+</script>

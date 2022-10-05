@@ -11,5 +11,11 @@ namespace Antaram_game.Controllers
         {
             return View();
         }
+
+        [HttpGet("/charcreation")]
+        public IActionResult CharacterCreation()
+        {
+            return View();
+        }
     }
 }

@@ -60,7 +60,11 @@ namespace Antaram_game.Controllers
             if (response.Equals("Successfully logged in"))
             {
                 HttpContext.Response.Headers.SetCookie = $"jwt={_jwtService.GenerateToken(user)}";
-                return new RedirectResult("/mainmenu");
+                if (user.HasCharacter)
+                {
+                    return new RedirectResult("/mainmenu");
+                }
+                return new RedirectResult("/charcreation");
             }
 
             return View(new ResponseDto(response));
