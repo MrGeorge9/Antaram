@@ -16,8 +16,8 @@ namespace Antaram_game.Controllers
             _playerService = playerService;
         }
 
-        [HttpGet("/mainmenu")]
-        public IActionResult MainMenu()
+        [HttpGet("/index")]
+        public IActionResult Index()
         {
             return View();
         }
@@ -39,7 +39,7 @@ namespace Antaram_game.Controllers
             {
                 return View(new ResponseDto(response));
             }
-            return new RedirectResult("/mainmenu");
+            return new RedirectResult("/index");
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Antaram_game.Controllers
         }
 
         [HttpGet("")]
-        public IActionResult Index(string message)
+        public IActionResult LandingPage(string message)
         {
             return View(new ResponseDto(message));
         }
@@ -62,7 +62,7 @@ namespace Antaram_game.Controllers
                 HttpContext.Response.Headers.SetCookie = $"jwt={_jwtService.GenerateToken(user)}";
                 if (user.HasCharacter)
                 {
-                    return new RedirectResult("/mainmenu");
+                    return new RedirectResult("/index");
                 }
                 return new RedirectResult("/charcreation");
             }
