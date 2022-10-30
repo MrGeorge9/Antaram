@@ -37,6 +37,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddTransient<IPublicService, PublicService>();
 builder.Services.AddTransient<IAuthService, JwtService>();
+builder.Services.AddTransient<IPlayerService, PlayerService>();
 
 var app = builder.Build();
 

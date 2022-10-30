@@ -17,7 +17,7 @@ namespace Antaram_game.Context
             modelBuilder.Entity<User>()
                 .HasOne(u => u.Character)
                 .WithOne(u => u.User)
-                .HasForeignKey<Character>(k => k.UserId);
+                .HasForeignKey<Character>(u => u.UserId);
         }
     }
 }
