@@ -50,15 +50,15 @@ namespace Antaram_game.Services
 
         public string Login(UserLoginDto userLogin)
         {
-            if (userLogin.Name == string.Empty && userLogin.Password == string.Empty)
+            if (userLogin.Name == string.Empty && userLogin.Password == string.Empty || userLogin.Name == null && userLogin.Password == null)
             {
                 return "No data provided";
             }
-            if (userLogin.Name == string.Empty)
+            if (userLogin.Name == string.Empty || userLogin.Name == null)
             {
                 return "No name provided";
             }
-            if (userLogin.Password == string.Empty)
+            if (userLogin.Password == string.Empty || userLogin.Password == null)
             {
                 return "No pasword provided";
             }

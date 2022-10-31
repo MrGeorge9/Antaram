@@ -24,6 +24,27 @@ namespace Antaram_game.Controllers
             return View(new ResponseDto(message));
         }
 
+        [HttpPost("")]
+        public IActionResult LandingPage(string name, string password)
+        {
+            var credentials = new UserLoginDto(name, password);
+            var response = _publicService.Login(credentials);
+
+            var user = _db.Users.FirstOrDefault(p => p.Name.Equals(name));
+
+            if (response.Equals("Successfully logged in"))
+            {
+                HttpContext.Response.Headers.SetCookie = $"jwt={_jwtService.GenerateToken(user)}";
+                if (user.HasCharacter)
+                {
+                    return new RedirectResult("/index");
+                }
+                return new RedirectResult("/charcreation");
+            }
+
+            return View(new ResponseDto(response));
+        }
+
         [HttpGet("/register")]
         public IActionResult Register()
         {
