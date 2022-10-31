@@ -1,22 +1,82 @@
 ﻿@model Antaram_game.Models.DTOs.ResponseDto
 
-<form method="post">
-    <fieldset>
-        <label for="Name">Name</label>
-        <input type="text"
-               name="Name"
-               id="Name"
-               required />
-        <label for="Password">Password</label>
-        <input type="text"
-               name="Password"
-               id="Password"
-               required />
-        <button type="submit">Register</button>
-    </fieldset>
-</form>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Antaram - Register</title>
 
-@if (Model != null)
-{
-    <p style="color: orange">@Model.Message</p>
-}
+        <link href="..\img\pcicon.png" rel="icon">
+        <link href="..\img\touch-icon.png" rel="apple-touch-icon">
+
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!--Bootsrap 4 CDN-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <!--Fontawesome CDN-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+        <!--Custom styles-->
+        <link href="..\css\styleLP.css" rel="stylesheet">
+    
+    </head>
+    <body>  
+        <div id="hero" class="container">
+            <div  data-aos="zoom-in" data-aos-delay="100">
+              <h1>Welcome to Antaram</h1>
+              <p>World of <span class="typed" data-typed-items="Adventure, Danger, Battles, Magic"></span></p>
+            </div>
+            <div class="d-flex justify-content-center h-100">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Register</h3>
+                        <div class="d-flex justify-content-end social_icon">
+                            <span><i class="fab fa-facebook-square"></i></span>
+                            <span><i class="fab fa-google-plus-square"></i></span>
+                            <span><i class="fab fa-twitter-square"></i></span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" name= "Name" class="form-control" placeholder="username">
+
+                            </div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input type="text" name= "Email" class="form-control" placeholder="email">
+                            </div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" name= "Password" class="form-control" placeholder="password">
+                            </div>
+                            @if (Model != null)
+                            {
+                                <p style="color: red; font-size: 16px; margin-left: 0px;">@Model.Message</p>
+                            }                          
+                            <div class="form-group">
+                                <input type="submit" value="Send" class="btn float-right login_btn">
+                            </div>
+                        </form>
+                    
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center links">
+                            Already have an account?<a href="/">Sign in</a>
+                        </div>                    
+                    </div>
+                </div>
+            </div>
+        </div>     
+        <script src="..\vendor\typed.js\typed.min.js"></script>
+        <script src="..\js\main.js"></script>
+    </body>
+</html>

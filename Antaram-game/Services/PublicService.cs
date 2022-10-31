@@ -17,15 +17,16 @@ namespace Antaram_game.Services
 
         public string Register(UserRegistrationDto userRegistration)
         {
-            if (userRegistration.Name == string.Empty && userRegistration.Password == string.Empty)
+            if (userRegistration.Name == string.Empty && userRegistration.Password == string.Empty || 
+                userRegistration.Name == null && userRegistration.Password == null)
             {
                 return "No data provided";
             }
-            if (userRegistration.Name == string.Empty)
+            if (userRegistration.Name == string.Empty || userRegistration.Name == null)
             {
                 return "No name provided";
             }
-            if (userRegistration.Password == string.Empty)
+            if (userRegistration.Password == string.Empty || userRegistration.Password == null)
             {
                 return "No pasword provided";
             }
@@ -41,8 +42,22 @@ namespace Antaram_game.Services
             {
                 return "Password must contain at leat one special character";
             }
+            if (userRegistration.Email == string.Empty || userRegistration.Email == null)
+            {
+                return "Wrong email adress";
+            }
+            if (!(userRegistration.Email.IndexOf('@') < userRegistration.Email.IndexOf('.'))
+                || !(userRegistration.Email.Count(x => x.Equals('@')) == 1)
+                || !(userRegistration.Email.Count(x => x.Equals('.')) == 1)
+                || userRegistration.Email.Split("@")[0] == string.Empty || userRegistration.Email.Split("@")[0] == null
+                || userRegistration.Email.Split("@")[1] == string.Empty || userRegistration.Email.Split("@")[1] == null
+                || userRegistration.Email.Split(".")[1] == string.Empty || userRegistration.Email.Split(".")[1] == null
+                )                
+            {
+                return "Wrong email adress";
+            }
 
-            _db.Users.Add(new User() { Name = userRegistration.Name, Password = userRegistration.Password });
+            _db.Users.Add(new User() { Name = userRegistration.Name, Password = userRegistration.Password, Email = userRegistration.Email });
             _db.SaveChanges();
 
             return "New user has been created";

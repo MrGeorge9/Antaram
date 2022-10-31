@@ -52,9 +52,9 @@ namespace Antaram_game.Controllers
         }
 
         [HttpPost("/register")]
-        public IActionResult Register(string name, string password)
+        public IActionResult Register(string name, string password, string email)
         {
-            var credentials = new UserRegistrationDto(name, password);
+            var credentials = new UserRegistrationDto(name, password, email);
             var response = _publicService.Register(credentials);
             if (response.Equals("New user has been created"))
             {
