@@ -1,0 +1,15 @@
+﻿
+img {
+    animation: transition 2s;
+}
+
+@keyframes transition {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+

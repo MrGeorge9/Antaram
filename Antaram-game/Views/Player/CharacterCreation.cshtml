@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <!--Custom styles-->
-    <link href="..\css\styleCrChar.css" rel="stylesheet">
+    <link href="..\css\StyleSheet.css" rel="stylesheet">
 
 </head>
 <body>
@@ -52,13 +52,10 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <div id="select2">
-                                <select name="Style">
-                                    <option value="fighter">Fighter</option>
-                                    <option value="mystic">Mystic</option>
-                                </select>
-                            </div>
-
+                            <select name="Style" id="select2">
+                                <option value="fighter">Fighter</option>
+                                <option value="mystic">Mystic</option>
+                            </select>
                         </div>
                         @if (Model != null)
                         {
@@ -69,21 +66,22 @@
                         </div>
                     </form>
                     <div id="image">
-                        <img src="../img/human-fighter.png" />
+                        <img src="../img/human-fighter.png" id="imag" />
                     </div>
                 </div>
                 <div class="card-footer">
                 </div>
             </div>
         </div>
-    </div>
-    <script src="..\vendor\typed.js\typed.min.js"></script>
-    <script src="..\js\main.js"></script>
+    </div>  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+        
+
+
         $("#select1").change(function() {
-            var race = $(this).val();          
-           
+            var race = $(this).val();
+
             $.ajax({
                 type: 'GET',
                 url: '/charcreation',
@@ -91,26 +89,55 @@
                     function(response) {
                         switch (race) {
                             case "human":
-                                var markup = "<label for='Style'>Style</label><select name='Style'><option value='fighter'>Fighter</option><option value='mystic'>Mystic</option></select>";
-                                var image = "<img src='../img/human-fighter.png'/>";
+                                var markup = "<select name='Style'><option value='fighter'>Fighter</option><option value='mystic'>Mystic</option></select>";
+                                var image = "<img src='../img/human-fighter.png' id='imag'/>";
                                 break;
                             case "elf":
-                                var markup = "<label for='Style'>Style</label><select name='Style'><option value='fighter'>Fighter</option><option value='mystic'>Mystic</option></select>";
-                                var image = "<img src='../img/elven-fighter.png'/>";
+                                var markup = "<select name='Style'><option value='fighter'>Fighter</option><option value='mystic'>Mystic</option></select>";
+                                var image = "<img src='../img/elven-fighter.png' id='imag'/>";
                                 break;
                             case "dwarf":
-                                var markup = "<label for='Style'>Style</label><select name='Style'><option value='fighter'>Fighter</option></select>";
-                                var image = "<img src='../img/dwarven-fighter.png'/>";
+                                var markup = "<select name='Style'><option value='fighter'>Fighter</option></select>";
+                                var image = "<img src='../img/dwarven-fighter.png' id='imag'/>";
                                 break;
                             case "orc":
-                                var markup = "<label for='Style'>Style</label><select name='Style'><option value='fighter'>Fighter</option></select>";
-                                var image = "<img src='../img/orc-fighter.png'/>";                                
-                        }                        
+                                var markup = "<select name='Style'><option value='fighter'>Fighter</option></select>";
+                                var image = "<img src='../img/orc-fighter.png' id='imag'/>";
+                        }
                         $("#select2").html(markup);
                         $("#image").html(image);
                     }
             });
         })
+        $("#select2").change(function() {
+            var style = $("#select2").val();
+            var race = $("#select1").val();
+
+            $.ajax({
+                type: 'GET',
+                url: '/charcreation',
+                success:
+                    function(response) {
+                        if (race == "human") {
+                            if (style == "fighter") {
+                                var image = "<img src='../img/human-fighter.png' id='imag'/>";
+                            }
+                            else {
+                                var image = "<img src='../img/human-mage.png' id='imag'/>";
+                            }
+                        }
+                        else if (race == "elf") {
+                            if (style == "fighter") {
+                                var image = "<img src='../img/elven-fighter.png'/>";
+                            }
+                            else {
+                                var image = "<img src='../img/elven-mage.png'/>";
+                            }
+                        }
+                        $("#image").html(image);
+                    }
+            });
+        })     
     </script>
 </body>
 </html>

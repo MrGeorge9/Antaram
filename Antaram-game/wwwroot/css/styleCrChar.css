@@ -1,5 +1,20 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Numans');
 
+
+body {
+    animation: transition 2s;
+}
+
+@keyframes transition {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 html, body {
     background-image: url("../img/char-creation.jpg");
     background-size: cover;
@@ -38,7 +53,7 @@ html, body {
         etter-spacing: 1px;
     }
 
-.container {
+.container { 
     align-content: center;
 }
 
