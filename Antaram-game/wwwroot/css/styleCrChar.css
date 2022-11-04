@@ -1,8 +1,8 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Numans');
 
 
-body {
-    animation: transition 2s;
+img {
+    animation: transition 1s;
 }
 
 @keyframes transition {
@@ -15,6 +15,14 @@ body {
     }
 }
 
+#image {
+    float: right; 
+}
+
+.charstats {
+    color: white;
+}
+
 html, body {
     background-image: url("../img/char-creation.jpg");
     background-size: cover;
@@ -22,67 +30,17 @@ html, body {
     height: 100%;
     font-family: 'Numans', sans-serif;
 }
-
-#hero:before {
-    content: "";
-    background: rgba(255, 255, 255, 0.1);
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-}
-
-#hero h1 {
-    padding-top: 15%;
-    font-size: 64px;
-    font-weight: 700;
-    line-height: 56px;
-    color: dimgrey;
-}
-
-#hero p {
-    color: dimgrey;
-    margin: 15px 0 0 20%;
-    font-size: 26px;
-    font-family: "Poppins", sans-serif;
-}
-
-    #hero p span {
-        color: indianred;
-        etter-spacing: 1px;
-    }
-
-.container { 
-    align-content: center;
-}
-
 .card {
-    height: 370px;
+    float: left;
+    height: 500px;
     margin-top: 80px;
     margin-bottom: auto;
-    width: 400px;
+    width: 300px;
     background-color: rgba(0,0,0,0.5) !important;
 }
 
-.social_icon span {
-    font-size: 60px;
-    margin-left: 10px;
-}
-
-    .social_icon span:hover {
-        color: white;
-        cursor: pointer;
-    }
-
 .card-header h3 {
     color: white;
-}
-
-.social_icon {
-    position: absolute;
-    right: 20px;
-    top: -40px;
 }
 
 .input-group-prepend span {
@@ -118,12 +76,4 @@ input:focus {
     .login_btn:hover {
         color: black;
         background-color: white;
-    }
-
-.links {
-    color: white;
-}
-
-    .links a {
-        margin-left: 4px;
     }

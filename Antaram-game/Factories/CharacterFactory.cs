@@ -101,7 +101,7 @@ namespace Antaram_game.Factories
                 Name = name,
                 Level = 1,
                 MaxHP = 350,
-                CurrentHP = 350,
+                CurrentHP = 120,
                 MaxMana = 120,
                 CurrentMana = 120,
                 Race = "orc",
