@@ -1,10 +1,5 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Numans');
 
-
-img {
-    animation: transition 1s;
-}
-
 @keyframes transition {
     from {
         opacity: 0;
@@ -17,10 +12,6 @@ img {
 
 #image {
     float: right; 
-}
-
-.charstats {
-    color: white;
 }
 
 html, body {
@@ -44,10 +35,10 @@ html, body {
 }
 
 .input-group-prepend span {
-    width: 50px;
-    background-color: darkgrey;
-    color: black;
-    border: 0 !important;
+    width: 40px;
+    background-color: grey;
+    color: white;
+    border: 2px solid white;
 }
 
 input:focus {
@@ -55,21 +46,10 @@ input:focus {
     box-shadow: 0 0 0 0 !important;
 }
 
-.remember {
-    color: white;
-}
-
-    .remember input {
-        width: 20px;
-        height: 20px;
-        margin-left: 15px;
-        margin-right: 5px;
-    }
-
 .login_btn {
-    color: black;
+    color: white;
     background-color: darkgrey;
-    border: 1px solid white;
+    border: 2px solid white;
     width: 100px;
 }
 
@@ -77,3 +57,36 @@ input:focus {
         color: black;
         background-color: white;
     }
+
+.charstats {
+    padding-top: 15px;
+    padding-bottom: 20px;
+    color: white;
+}
+
+img {
+    padding-top: 10%;
+    animation: transition 1s;
+}
+
+label {    
+    padding: 0px 10px 25px 10px;
+    color: white;
+    border: 2px solid white;
+    border-radius: 4px;
+    height: 20px;
+    background-color: grey;
+}
+
+select {   
+    height: 30px; 
+    border-radius: 4px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.selects {
+    margin-top: 10px;
+}
