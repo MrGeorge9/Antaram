@@ -68,5 +68,11 @@ namespace Antaram_game.Services
             }
             return null;
         }
+
+        public Character GetRace(IEnumerable<Claim> userClaims)
+        {
+            var user = _jwtService.ReturnUserFromToken(userClaims);
+            return user.Character;
+        }
     }
 }

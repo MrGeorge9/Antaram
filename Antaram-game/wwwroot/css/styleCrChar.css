@@ -15,7 +15,7 @@
 }
 
 html, body {
-    background-image: url("../img/char-creation.jpg");
+    background-image: url("../img/characterCreation/char-creation.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;

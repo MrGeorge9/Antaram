@@ -19,7 +19,10 @@ namespace Antaram_game.Controllers
         [HttpGet("/index")]
         public IActionResult Index()
         {
-            return View();
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var userClaims = identity.Claims;
+            var character = _playerService.GetRace(userClaims);
+            return View(character);
         }
 
         [HttpGet("/charcreation")]

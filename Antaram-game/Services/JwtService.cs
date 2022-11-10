@@ -1,5 +1,6 @@
 ﻿using Antaram_game.Context;
 using Antaram_game.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -49,8 +50,7 @@ namespace Antaram_game.Services
         public User ReturnUserFromToken(IEnumerable<Claim> userClaims)
         {
             var userId = Int32.Parse(userClaims.FirstOrDefault(p => p.Type == ClaimTypes.NameIdentifier).Value);
-            var user = _db.Users.FirstOrDefault(p => p.Id == userId);
-
+            var user = _db.Users.Include(p => p.Character).FirstOrDefault(p => p.Id == userId);
             return user;
         }
     }
